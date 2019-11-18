@@ -166,3 +166,29 @@ void childrenAmountCalc(Vertices *v)
 }
 
 
+void isRoot(Vertices *v)
+{
+    int length = *Vnum;
+    for (int i=0; i < length; i++)
+    {
+        v[i].isRoot = 1;
+        for (int j =0; j < length; j++)
+        {
+            if(i!=j)
+            {
+                for (int k=0; k < (int) strlen(v[j].children); k++)
+                {
+                    if ((char) i == v[j].children[k])
+                    {
+                        v[i].isRoot = 0;
+                        break;
+                    }
+                }
+            }
+            if(v[i].isRoot == 0)
+            {
+                break;
+            }
+        }
+    }
+}
